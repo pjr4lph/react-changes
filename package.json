@@ -1,0 +1,11 @@
+{
+  "name": "react-changes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "ralph",
+  "license": "ISC"
+}
