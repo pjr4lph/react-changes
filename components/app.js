@@ -20,7 +20,7 @@ class App extends Component {
 
   removeItem(item) {
     let arr = this.state.pageList.filter((el) => {
-      return el !== item;
+      return el.value !== item;
     });
     this.setState({pageList: arr});
   }

@@ -18319,7 +18319,7 @@ var App = function (_Component) {
     key: 'removeItem',
     value: function removeItem(item) {
       var arr = this.state.pageList.filter(function (el) {
-        return el !== item;
+        return el.value !== item;
       });
       this.setState({ pageList: arr });
     }
@@ -18353,22 +18353,24 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// import Item from './list_item';
-
 var List = function List(_ref) {
   var pageList = _ref.pageList,
       removeItem = _ref.removeItem;
 
-  // const { pageList } = props;
 
-  var renderedList = pageList.map(function (el, i) {
-    // return <li><Item key={i} value={el}></Item></li>;
+  var renderedList = pageList.map(function (obj, i) {
+    var curDate = Date(obj.createdAt).toString();
     return _react2.default.createElement(
       'li',
       { key: i, onClick: function onClick() {
-          removeItem(el);
+          removeItem(obj.value);
         } },
-      el
+      obj.value,
+      _react2.default.createElement(
+        'span',
+        null,
+        curDate
+      )
     );
   });
 
@@ -18411,7 +18413,8 @@ var Submit = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Submit.__proto__ || Object.getPrototypeOf(Submit)).call(this, props));
 
     _this.state = {
-      value: ''
+      value: '',
+      createdAt: ''
     };
     _this.handleChange = _this.handleChange.bind(_this);
     _this.resetField = _this.resetField.bind(_this);
@@ -18421,12 +18424,12 @@ var Submit = function (_Component) {
   _createClass(Submit, [{
     key: 'handleChange',
     value: function handleChange(event) {
-      this.setState({ value: event.target.value });
+      this.setState({ value: event.target.value, createdAt: Date.now() });
     }
   }, {
     key: 'resetField',
     value: function resetField() {
-      this.setState({ value: '' });
+      this.setState({ value: '', createdAt: '' });
     }
   }, {
     key: 'render',
@@ -18438,7 +18441,7 @@ var Submit = function (_Component) {
         null,
         _react2.default.createElement('input', { type: 'text', value: this.state.value, onChange: this.handleChange }),
         _react2.default.createElement('input', { id: 'submit-btn', type: 'submit', onClick: function onClick() {
-            _this2.props.addItem(_this2.state.value);_this2.resetField();
+            _this2.props.addItem(_this2.state);_this2.resetField();
           } })
       );
     }

@@ -41,3 +41,7 @@ ul {
   list-style: none;
   color: white;
 }
+
+span {
+  font-size: 12px;
+}
