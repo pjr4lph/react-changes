@@ -5,13 +5,17 @@
   "scripts": {
     "test": "test",
     "start": "webpack-dev-server --open",
-    "webpack": "webpack -w"
+    "webpack": "webpack -w",
+    "star": "nodemon ./server/server.js"
   },
   "author": "ralph",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.2",
+    "http": "0.0.0",
+    "mongoose": "^5.0.7",
     "node-sass": "^4.7.2",
+    "nodemon": "^1.15.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },
