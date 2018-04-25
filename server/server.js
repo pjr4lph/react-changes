@@ -8,12 +8,12 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const http = require('http');
 const app = express();
-
+const todoController = require('./../todoController')
 // making a server makes it possible to use same server for websockets
 // const server = http.createServer(app);
 
 // the database is going to save removed todoList items by date and list item
-const dbURI = 'mongodb://localhost:27017/';
+const dbURI = 'mongodb://ralph:pjr4lph@ds151558.mlab.com:51558/ralphs';
 
 mongoose.connect(dbURI);
 const db = mongoose.connection;
@@ -38,8 +38,6 @@ app.get('/build/webpack-bundle.js', (req, res) => {
   res.sendFile(path.join(__dirname , './../build/webpack-bundle.js'));
 });
 
-// app.get('/find', (req, res, next) => {
-//
-// });
+app.post('/addTodo', (req, res) => {console.log(todoController.createTodo)});
 
-app.listen('3000');
+app.listen('3000', () => console.log('listening on 3000'));
