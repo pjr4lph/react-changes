@@ -22,8 +22,8 @@ class Submit extends Component {
   render() {
     return (
       <div>
-          <input type="text" value={this.state.value} onChange={this.handleChange}/>
-          <input id="submit-btn" type="submit" onClick={()=>{this.props.addItem(this.state); this.resetField()}}></input>
+        <input type="text" value={this.state.value} onChange={this.handleChange}/>
+        <input id="submit-btn" type="submit" onClick={()=>{this.props.addItem(this.state); this.resetField()}}></input>
       </div>
     )
   }
